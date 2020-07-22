@@ -178,10 +178,76 @@ Available at LinkedIn Learning
 
       let theResult = doSomeMath();
       console.log('closure example', theResult());
+      // without closeure, theResult() should give us an error since a & b, both variables are not defined for now
+    ```
+  - why do we have this feature?
+    ```javascript
+      function giveMeEms(pixels) {
+        var baseValue = 16;
+
+        function doTheMath() {
+          return pixels / baseValue;
+        }
+
+        return doTheMath;
+      }
+
+      var smallSize = giveMeEms(12);
+      var mediumSize = giveMeEms(18);
+      var largeSize = giveMeEms(24);
+      var xlargeSize = giveMeEms(32);
+
+      console.log("Small size: ", smallSize());
+      console.log("medium size: ", mediumSize());
+      console.log("large size: ", largeSize());
+      console.log("xlarge size: ", xlargeSize());
+    ```
+  - reference:
+    [closure on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+
+  ### JavaScript and the DOM
+  5.1 DOM: The document object model
+    - Browser object model: current window, it contains the document
+    - Node tree, document is the root node
+  
+  5.2 target elements in the DOM with querySelector methods
+    - document.body, document.title, document.URL
+    ```javascript
+    document.getElementById()
+    document.getElementsByClassName();
+    document.getElementsByTagName();
+
+    // get the first match elements
+    document.querySelector(" ");
+    // get all matching elements
+    document.querySelectorAll("");
+    // . for CSS selector; # for id selector
     ```
 
+  5.3 Access and change elements, classes, attributes
+  [References on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element)
+    ```javascript
+      document.querySelector(".main-title").innerHTML;
+      document.querySelector(".main-title").className;
+      document.querySelector(".main-title").classList;
 
+      element.getAttribute("attr name");
+      element.setAttribute("attrName", "value");
+    ```
+  
+  5.6 add DOM elements && add inline CSS to an element
+    - inline CSS: add any CSS property to any element via Javascirpt using the style attribute
+    - inline css overrides whatever CSS is applied to an element
+    - in mose cases, best practice is to create CSS rules and use JavaScript to manage these classes to apply the rules to the element
 
+  ```javascript
+  // style is one of types of attribute, 
+    document.querySelector(".cta a").style.color;
+
+    document.querySelector(".cta a").style.cssText = "padding: 1em; color: red";
+
+    document.querySelector(".cta a").setAttribute("style", "padding: 2em; color: green; background-color: black");
+  ```
 
 
 
